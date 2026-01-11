@@ -1,21 +1,27 @@
-print("-----------------------------------")
-print("Welcome to game guess number!")
+# Импотрируем библиотеку random
+import random
 
-def guess_number(number):
-    if number == 42:
-        return 'You win!'
-    elif number > 42:
-        return 'Try again! So big number'
-    else: 
-        return 'Try again! So low number'
-        
-while True:
-    try:
-        play_screen = int(input("Enter You number: "))
-        result = guess_number(play_screen)
-        print(result)
-        
-        if play_screen == 42:
+print("--------------------------------------------------------")
+print("Добро пожаловать в игру угадай число!")
+# Создаем функцию угадай число 
+def guess_number():
+    # Создаем переменную Answer, которая будет перебирать массив от 0 до 100
+    Answer = random.randint(0,100)
+    # Создаем бесконечный цикл
+    while True:
+        # пользователь вводит число 
+        user_guess = int(input("Каковы ваши предположения?"))
+        # если загаданное число угадано , то выводится правильно
+        if user_guess == Answer:
+            print(f"Правильно! Ответ: {user_guess}")
             break
-    except ValueError:
-        print('Erorr! Enter valid number!')
+        
+        if user_guess < Answer:
+            print(f"Ваше число {user_guess} слишком маленькое!")
+        else:
+            print(f"Ваше число {user_guess} слишком большое!")
+
+print("Спасибо за игру! Жду вас снова!")
+print("-------------------------------------------------------------------")
+
+guess_number()
